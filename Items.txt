@@ -1,0 +1,20 @@
+﻿a1|Zapp's Voodoo Chips|1M|Chips
+a2|Zapp's Caijin Dill Gator-Tator Chips|2M|Chips
+a3|Zapp's Sour Cream & Onion Chips|3M|Chips
+a4|Zapp's Blood Moon Chips|4M|Chips
+a5|Zapp's Unicorn Chips|5M|Chips
+b1|Reese's Candy|6M|Candy
+b2|Butterfingers Candy|7M|Candy
+b3|Three Candy|8M|Candy
+b4|Four Candy|9M|Candy
+b5|Five Candy|10M|Candy
+c1|One Drink|11M|Drink
+c2|Two Drink|12M|Drink
+c3|Three Drink|13M|Drink
+c4|Four Drink|14M|Drink
+c5|Five Drink|15M|Drink
+d1|One Gum|16M|Gum
+d2|Two Gum|17M|Gum
+d3|Three Gum|18M|Gum
+d4|Four Gum|19M|Gum
+d5|Five Gum|20M|Gum
