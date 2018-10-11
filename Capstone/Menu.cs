@@ -29,7 +29,14 @@ namespace Capstone
                     
                     foreach (KeyValuePair<string, IVendingItem> kvp in VM.VendingMachineItems )
                     {
-                        Console.WriteLine($"{kvp.Key}: {kvp.Value.ItemsRemaining} { kvp.Value.ProductName }. Costs: { kvp.Value.Price.ToString("C")} each.");
+                        if(kvp.Value.ItemsRemaining > 0)
+                        {
+                            Console.WriteLine($"{kvp.Key}: {kvp.Value.ItemsRemaining} { kvp.Value.ProductName }. Costs: { kvp.Value.Price.ToString("C")} each.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{kvp.Key}: { kvp.Value.ProductName } IS SOLD OUT.");
+                        }
                     }
                 }
                 else if (input == "2")

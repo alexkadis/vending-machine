@@ -7,10 +7,12 @@ namespace Capstone
     public class Money
     {
         public decimal MoneyInMachine { get; private set; }
+        public Logger Log;
 
-        public Money()
+        public Money(Logger log)
         {
             this.MoneyInMachine = 0;
+            this.Log = log;
         }
 
         public bool AddMoney(string amount)
@@ -20,7 +22,24 @@ namespace Capstone
                 amountInserted = 0M;
                 return false;
             }
+
+            
+            string message = $"FEED MONEY: ";
+
+            // Logging before: current money in machine
+            decimal before = this.MoneyInMachine;
+
+            // Add the money
             this.MoneyInMachine += amountInserted;
+
+            // Logging after: current money in machine
+            decimal after = this.MoneyInMachine;
+
+            // Log the log
+            Log.Log(message, before, after);
+
+
+            
             return true;
         }
 
@@ -41,7 +60,13 @@ namespace Capstone
             int quarters = 0;
             int dimes = 0;
             int nickels = 0;
-            if(this.MoneyInMachine > 0)
+
+            // Logging message "CANDYBARNAME A1"
+            string message = $"GIVE CHANGE: ";
+            // Logging before: current money in machine
+            decimal before = this.MoneyInMachine;
+
+            if (this.MoneyInMachine > 0)
             {
                 while (this.MoneyInMachine > 0)
                 {
@@ -62,6 +87,12 @@ namespace Capstone
                     }
                 }
                 result = $"Your change is {quarters} quarters, {dimes} dimes, and {nickels} nickels";
+
+                // Logging after: current money in machine
+                decimal after = this.MoneyInMachine;
+
+                // Log the log
+                Log.Log(message, before, after);
             }
             else
             {
