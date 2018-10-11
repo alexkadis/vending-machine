@@ -6,15 +6,12 @@ namespace Capstone
 {
     public class Menu
     {
-        public static void Main(string[] args)
-        {
-            // TO DO: PUT THINGS HERE THAT ARE AWESOME
-            PrintHeader();
-            Display();
-        }
+        VendingMachine VM = new VendingMachine();
 
-        public static void Display()
+
+        public void Display()
         {
+            PrintHeader();
             while (true)
             {
                 Console.WriteLine();
@@ -29,10 +26,15 @@ namespace Capstone
                 if (input == "1")
                 {
                     Console.WriteLine("Displaying Items");
+                    
+                    foreach (KeyValuePair<string, IVendingItem> kvp in VM.VendingMachineItems )
+                    {
+                        Console.WriteLine($"{kvp.Key}: {kvp.Value.ItemsRemaining} { kvp.Value.ProductName }. Costs: { kvp.Value.Price.ToString("C")} each.");
+                    }
                 }
                 else if (input == "2")
                 {
-                    SubMenu submenu = new SubMenu();
+                    SubMenu submenu = new SubMenu(VM);
                     submenu.Display();
                 }
                 else if (input.ToUpper() == "Q")

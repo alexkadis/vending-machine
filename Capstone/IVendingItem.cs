@@ -9,22 +9,22 @@ namespace Capstone
         /// <summary>
         /// The name of the VendingItem
         /// </summary>
-        string ProductName { get; set; }
+        public string ProductName { get; set; }
 
         /// <summary>
         /// The price of the VendingItem
         /// </summary>
-        decimal Price { get; set; }
+        public decimal Price { get; set; }
 
         /// <summary>
         /// How many of each VendingItem remains
         /// </summary>
-        int ItemsRemaining { get; set; }
+        public int ItemsRemaining { get; set; }
 
         /// <summary>
         /// What the menu displays when the VendingItem is vended
         /// </summary>
-        string MessageWhenVended { get; set; }
+        public string MessageWhenVended { get; set; }
 
         public IVendingItem()
         {
@@ -39,5 +39,20 @@ namespace Capstone
             this.MessageWhenVended = messageWhenVended;
         }
 
+
+        /// <summary>
+        /// Returns false if it can't get the item
+        /// </summary>
+        /// <param name="itemNumber"></param>
+        /// <returns></returns>
+        public bool RemoveItem()
+        {
+            if(ItemsRemaining > 0)
+            {
+                ItemsRemaining--;
+                return true;
+            }
+            return false;
+        }
     }
 }
