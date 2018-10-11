@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Capstone
 {
-    class SubMenu
+    public class SubMenu
     {
         public void Display()
         {

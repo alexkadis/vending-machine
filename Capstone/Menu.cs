@@ -4,14 +4,19 @@ using System.Text;
 
 namespace Capstone
 {
-    class Menu
+    public class Menu
     {
-        public void Display()
+        public static void Main(string[] args)
+        {
+            // TO DO: PUT THINGS HERE THAT ARE AWESOME
+            PrintHeader();
+            Display();
+        }
+
+        public static void Display()
         {
             while (true)
             {
-                PrintHeader();
-
                 Console.WriteLine();
                 Console.WriteLine("Main Menu");
                 Console.WriteLine("1] Display Vending Machine Items");
@@ -48,7 +53,7 @@ namespace Capstone
 
 
 
-        private void PrintHeader()
+        private static void PrintHeader()
         {
             Console.WriteLine("WELCOME TO THE BEST VENDING MACHINE EVER!!!! (Distant crowd roar)");
         }

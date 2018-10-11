@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Capstone
 {
-    public class VendingItem
+    public class VendingMachine
     {
-        string SlotLocation { get; private set; }
 
     }
 }
