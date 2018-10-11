@@ -7,7 +7,7 @@ namespace Capstone
 {
     public class FileHandler
     {
-        private Dictionary<string, IVendingItem> GetVendingItems()
+        public Dictionary<string, IVendingItem> GetVendingItems()
         {
             Dictionary<string, IVendingItem> items = new Dictionary<string, IVendingItem>();
 
