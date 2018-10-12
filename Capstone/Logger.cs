@@ -3,21 +3,38 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+
+
 namespace Capstone
 {
-    /// <summary>
-    /// The Kickass Lumberjack Class
-    /// </summary>
     public class Logger
     {
         public void Log(string message, decimal moneyBefore, decimal moneyAfter)
         {
             DateTime date = DateTime.Now;
-            string logLine = $"{date.ToString("MM/dd/yyyy hh:mm:ss tt")} {message} {moneyBefore.ToString("C")} {moneyAfter.ToString("C")}";
+            string dateString = date.ToString("MM/dd/yyyy hh:mm:ss tt");
+            dateString = dateString.PadRight(30);
 
-            using (StreamWriter sw = new StreamWriter("Log.txt", true))
+            message = message.PadRight(50);
+
+            string moneyBeforeString = moneyBefore.ToString("C");
+            moneyBeforeString = moneyBeforeString.PadLeft(10).PadRight(15);
+
+            string moneyAfterString = moneyAfter.ToString("C").PadLeft(10);
+
+            string logLine = $"{dateString} {message} {moneyBeforeString} {moneyAfterString}";
+
+            try
             {
-                sw.WriteLine(logLine);
+                using (StreamWriter sw = new StreamWriter("Log.txt", true))
+                {
+                    sw.WriteLine(logLine);
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Error when trying to log");
+                return;
             }
         }
     }

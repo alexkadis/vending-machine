@@ -8,7 +8,7 @@ namespace Capstone
     {
         public static void Main(string[] args)
         {
-            // TO DO: PUT THINGS HERE THAT ARE AWESOME
+            
 
             Menu menu = new Menu();
 

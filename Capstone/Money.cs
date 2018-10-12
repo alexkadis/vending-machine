@@ -11,7 +11,7 @@ namespace Capstone
 
         public Money(Logger log)
         {
-            this.MoneyInMachine = 0;
+            this.MoneyInMachine = 0M;
             this.Log = log;
         }
 
@@ -70,7 +70,7 @@ namespace Capstone
             {
                 while (this.MoneyInMachine > 0)
                 {
-                    if(this.MoneyInMachine >= 0.25M)
+                    if (this.MoneyInMachine >= 0.25M)
                     {
                         quarters++;
                         this.RemoveMoney(0.25M);
@@ -86,7 +86,49 @@ namespace Capstone
                         this.RemoveMoney(0.05M);
                     }
                 }
-                result = $"Your change is {quarters} quarters, {dimes} dimes, and {nickels} nickels";
+
+                
+                 
+
+                string qS = "";
+                string dS = "";
+                string nS = "";
+                if (quarters > 0)
+                {
+                    qS = $"{quarters} quarters";
+                }
+                if (dimes > 0)
+                {
+                    dS = $"{dimes} dimes";
+                }
+                if (nickels > 0)
+                {
+                    nS = $"{nickels} nickels";
+                }
+
+                result = $"Your change is ";
+
+                if (quarters > 0 && dimes > 0 && nickels > 0)
+                {
+                    result += $"{qS}, {dS}, and {nS}";
+                }
+                else if ((quarters > 0 && dimes > 0) || (quarters > 0 && nickels > 0))
+                {
+                    result += $"{qS} and {dS}{nS}";
+                }
+                else if (dimes > 0 && nickels > 0)
+                {
+                    result += $"{dS} and {nS}";
+                }
+                else if (quarters > 0 || dimes > 0 || nickels > 0)
+                {
+                    result += $"{qS}{dS}{nS}";
+                }
+                else
+                {
+                    result = "No change to give.";
+                }
+
 
                 // Logging after: current money in machine
                 decimal after = this.MoneyInMachine;

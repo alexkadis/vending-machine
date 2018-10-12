@@ -16,4 +16,10 @@
     <ProjectReference Include="..\Capstone\Capstone.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="vendingmachine.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

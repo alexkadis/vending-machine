@@ -4,8 +4,10 @@ using System.Text;
 
 namespace Capstone
 {
-    public class Gum : IVendingItem
+    public class Gum : VendingItem
     {
+        const string Message = "Chew, Chew, Yum!";
+
         public Gum(
             string productName,
             decimal price,
@@ -13,10 +15,9 @@ namespace Capstone
                 productName, 
                 price, 
                 itemsRemaining, 
-                "Chew, Chew, Yum!"
+                Message
                 )
         {
-            // TODO: do we need something here???
         }
     }
 }

@@ -14,13 +14,9 @@ namespace CapstoneTests
         {
             FileHandler fileHandler = new FileHandler();
 
-            Dictionary<string, IVendingItem> items = fileHandler.GetVendingItems();
-            IVendingItem item = new Chips("Zapp's Voodoo Chips", 3.05M, 5);
+            Dictionary<string, VendingItem> items = fileHandler.GetVendingItems();
+            VendingItem item = new Chip("Zapp's Voodoo Chip", 3.05M, 5);
             Assert.AreEqual(item, items["A1"]);
         }
-        //[TestMethod]
-        //public static void ()
-        //    {
-        //    }
 }
 }

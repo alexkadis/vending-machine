@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Capstone
 {
-    public abstract class IVendingItem
+    public abstract class VendingItem
     {
         /// <summary>
         /// The name of the VendingItem
@@ -26,26 +26,29 @@ namespace Capstone
         /// </summary>
         public string MessageWhenVended { get; set; }
 
-        public IVendingItem()
+        public string MessageWhenSoldOut { get; set; }
+
+        public VendingItem()
         {
 
         }
 
-        public IVendingItem(string productName, decimal price, int itemsRemaining, string messageWhenVended)
+        public VendingItem(string productName, decimal price, int itemsRemaining, string messageWhenVended)
         {
             this.ProductName = productName;
             this.Price = price;
             this.ItemsRemaining = itemsRemaining;
             this.MessageWhenVended = messageWhenVended;
-        }
+            this.MessageWhenSoldOut = $"Sold out of {this.ProductName}!\nBuy something else!";
 
+        }
 
         /// <summary>
         /// Returns false if it can't get the item
         /// </summary>
         /// <param name="itemNumber"></param>
         /// <returns></returns>
-        public bool RemoveItem()
+            public bool RemoveItem()
         {
             if(ItemsRemaining > 0)
             {

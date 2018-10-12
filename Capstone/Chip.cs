@@ -4,19 +4,20 @@ using System.Text;
 
 namespace Capstone
 {
-    public class Drinks : IVendingItem
+    public class Chip : VendingItem
     {
-        public Drinks(
+        const string Message = "Crunch, Crunch, Yum!";
+
+        public Chip(
             string productName,
             decimal price,
             int itemsRemaining) : base(
                 productName, 
                 price, 
                 itemsRemaining, 
-                "Glug, Glug, Yum!"
+                Message
                 )
         {
-            // TODO: do we need something here???
         }
     }
 }

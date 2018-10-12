@@ -7,65 +7,74 @@ namespace Capstone
 {
     public class FileHandler
     {
-        public Dictionary<string, IVendingItem> GetVendingItems()
+        private const int Pos_itemNumber = 0;
+        private const int Pos_ItemName = 1;
+        private const int Pos_ItemPrice = 2;
+        private const int Pos_itemType = 3;
+
+        public Dictionary<string, VendingItem> GetVendingItems()
         {
-            Dictionary<string, IVendingItem> items = new Dictionary<string, IVendingItem>();
+            Dictionary<string, VendingItem> items = new Dictionary<string, VendingItem>();
 
             string file = "";
-
-            if(File.Exists("vendingmachine.csv"))
+            if (File.Exists("vendingmachine.csv"))
             {
                 file = "vendingmachine.csv";
 
-
-                using (StreamReader sr = new StreamReader(file))
+                try
                 {
-                    while (!sr.EndOfStream)
+                    using (StreamReader sr = new StreamReader(file))
                     {
-                        // Read the line
-                        string line = sr.ReadLine();
-
-                        string[] itemDetails = line.Split("|");
-
-                        string itemName = itemDetails[1];
-
-                        if (!decimal.TryParse(itemDetails[2], out decimal itemPrice))
+                        while (!sr.EndOfStream)
                         {
-                            itemPrice = 0M;
+                            // Read the line
+                            string line = sr.ReadLine();
+
+                            string[] itemDetails = line.Split("|");
+
+                            string itemName = itemDetails[Pos_ItemName];
+
+                            if (!decimal.TryParse(itemDetails[Pos_ItemPrice], out decimal itemPrice))
+                            {
+                                itemPrice = 0M;
+                            }
+
+                            int itemsRemaining = 5;
+
+                            VendingItem item;
+
+                            switch (itemDetails[Pos_itemType])
+                            {
+                                case "Chip":
+                                    item = new Chip(itemName, itemPrice, itemsRemaining);
+                                    break;
+                                case "Drink":
+                                    item = new Drink(itemName, itemPrice, itemsRemaining);
+                                    break;
+                                case "Gum":
+                                    item = new Gum(itemName, itemPrice, itemsRemaining);
+                                    break;
+                                default:
+                                    item = new Chip(itemName, itemPrice, itemsRemaining);
+                                    break;
+                            }
+
+                            items.Add(itemDetails[Pos_itemNumber], item);
                         }
-
-                        int itemsRemaining = 5;
-
-                        IVendingItem item;
-
-                        switch (itemDetails[3])
-                        {
-                            case "Chip":
-                                item = new Drinks(itemName, itemPrice, itemsRemaining);
-                                break;
-                            case "Drink":
-                                item = new Drinks(itemName, itemPrice, itemsRemaining);
-                                break;
-                            case "Gum":
-                                item = new Gum(itemName, itemPrice, itemsRemaining);
-                                break;
-                            default:
-                                // CANDY IS THE DEFAULT AS IT SHOULD BE AND ALWAYS WILL
-                                item = new Chips(itemName, itemPrice, itemsRemaining);
-                                break;
-                        }
-
-                        items.Add(itemDetails[0], item);
                     }
+                }
+                catch
+                {
+                    Console.WriteLine("Error trying to open the input file.");
                 }
             }
             else
             {
                 Console.WriteLine("Input file is missing!! The vending machine will now self destruct.");
-                items.Add("A1", new Drinks("YOU BROKE IT!", 10000M, 5));
+                items.Add("A1", new Drink("YOU BROKE IT!", 10000M, 5));
             }
+            
             return items;
-
         }
     }
 }

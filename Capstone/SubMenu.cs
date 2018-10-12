@@ -17,13 +17,14 @@ namespace Capstone
         {
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine();
-                Console.WriteLine("SubMenu 1");
+                Console.WriteLine("Please choose from the following options:");
                 Console.WriteLine("1] >> Feed Money");
                 Console.WriteLine("2] >> Select Product");
                 Console.WriteLine("3] >> Finish Transaction");
                 Console.WriteLine("Q] >> Return to Main Menu");
-                Console.WriteLine($"Money in Machine: {VM.Money.MoneyInMachine}");
+                Console.WriteLine($"Money in Machine: {VM.Money.MoneyInMachine.ToString("C")}");
                 Console.Write("What option do you want to select? ");
                 string input = Console.ReadLine();
 
@@ -45,7 +46,7 @@ namespace Capstone
                             }
                             else
                             {
-                                Console.WriteLine($"Money in Machine: {VM.Money.MoneyInMachine}");
+                                Console.WriteLine($"Money in Machine: {VM.Money.MoneyInMachine.ToString("C")}");
                                 break;
                             }
                         }
@@ -54,22 +55,32 @@ namespace Capstone
                 }
                 else if (input == "2")
                 {
-                    Console.Write(">>> What item do you want? ");
-                    string choice = Console.ReadLine();
+                    while(true)
+                    {
+                        VM.DisplayAllItems();
+                        Console.Write(">>> What item do you want? ");
+                        string choice = Console.ReadLine();
 
-                    if (VM.RetreiveItem(choice))
-                    {
-                        Console.WriteLine($"Enjoy your {VM.VendingMachineItems[choice].ProductName}\n{VM.VendingMachineItems[choice].MessageWhenVended}");
+                        if (VM.ItemExists(choice) && VM.RetreiveItem(choice))
+                        {
+                            Console.WriteLine($"Enjoy your {VM.VendingMachineItems[choice].ProductName}\n{VM.VendingMachineItems[choice].MessageWhenVended}");
+                            break;
+                        }
+                        else if (!VM.ItemExists(choice))
+                        {
+                            Console.Clear();
+                            Console.WriteLine("**INVALID ITEM**");
+                        }
+                        else if (VM.ItemExists(choice) && VM.Money.MoneyInMachine > VM.VendingMachineItems[choice].Price)
+                        {
+                            Console.WriteLine(VM.VendingMachineItems[choice].MessageWhenSoldOut);
+                        }
+                        else if (VM.Money.MoneyInMachine < VM.VendingMachineItems[choice].Price)
+                        {
+                            Console.WriteLine(VM.NotEnoughMoneyError);
+                            break;
+                        }
                     }
-                    else if(VM.ItemExists(choice) && VM.Money.MoneyInMachine > VM.VendingMachineItems[choice].Price)
-                    {
-                        Console.WriteLine($"Sold out of {VM.VendingMachineItems[choice].ProductName}!\nBuy something else.");
-                    }
-                    //else
-                    //{
-                    //    Console.WriteLine("Not a valid choice");
-                    //    break;
-                    //}
                 }
                 else if (input == "3")
                 {
