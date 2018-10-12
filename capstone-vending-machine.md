@@ -12,7 +12,7 @@
 Basically it uses all of the other classes...
 
 
-# Abstract class or Interface: VendingItem
+<!-- # Abstract class or Interface: VendingItem
 - Slot Location
 - Product name
 - Price
@@ -24,7 +24,7 @@ Basically it uses all of the other classes...
 - chips
 - candy
 - drinks
-- gum
+- gum -->
 
 # Class: Money
 - Tracks money fed into the system
