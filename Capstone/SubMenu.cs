@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Capstone
+﻿namespace Capstone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class SubMenu
     {
         public VendingMachine VM;
@@ -24,7 +24,7 @@ namespace Capstone
                 Console.WriteLine("2] >> Select Product");
                 Console.WriteLine("3] >> Finish Transaction");
                 Console.WriteLine("Q] >> Return to Main Menu");
-                Console.WriteLine($"Money in Machine: {VM.Money.MoneyInMachine.ToString("C")}");
+                Console.WriteLine($"Money in Machine: {this.VM.Money.MoneyInMachine.ToString("C")}");
                 Console.Write("What option do you want to select? ");
                 string input = Console.ReadLine();
 
@@ -40,13 +40,13 @@ namespace Capstone
                             || amountToSubmit == "5"
                             || amountToSubmit == "10")
                         {
-                            if(!VM.Money.AddMoney(amountToSubmit))
+                            if (!this.VM.Money.AddMoney(amountToSubmit))
                             {
                                 Console.WriteLine("Insert a valid amount.");
                             }
                             else
                             {
-                                Console.WriteLine($"Money in Machine: {VM.Money.MoneyInMachine.ToString("C")}");
+                                Console.WriteLine($"Money in Machine: {this.VM.Money.MoneyInMachine.ToString("C")}");
                                 break;
                             }
                         }
@@ -55,29 +55,29 @@ namespace Capstone
                 }
                 else if (input == "2")
                 {
-                    while(true)
+                    while (true)
                     {
-                        VM.DisplayAllItems();
+                        this.VM.DisplayAllItems();
                         Console.Write(">>> What item do you want? ");
                         string choice = Console.ReadLine();
 
-                        if (VM.ItemExists(choice) && VM.RetreiveItem(choice))
+                        if (this.VM.ItemExists(choice) && VM.RetreiveItem(choice))
                         {
-                            Console.WriteLine($"Enjoy your {VM.VendingMachineItems[choice].ProductName}\n{VM.VendingMachineItems[choice].MessageWhenVended}");
+                            Console.WriteLine($"Enjoy your {VM.VendingMachineItems[choice].ProductName}\n{this.VM.VendingMachineItems[choice].MessageWhenVended}");
                             break;
                         }
-                        else if (!VM.ItemExists(choice))
+                        else if (!this.VM.ItemExists(choice))
                         {
                             Console.Clear();
                             Console.WriteLine("**INVALID ITEM**");
                         }
-                        else if (VM.ItemExists(choice) && VM.Money.MoneyInMachine > VM.VendingMachineItems[choice].Price)
+                        else if (this.VM.ItemExists(choice) && this.VM.Money.MoneyInMachine > this.VM.VendingMachineItems[choice].Price)
                         {
-                            Console.WriteLine(VM.VendingMachineItems[choice].MessageWhenSoldOut);
+                            Console.WriteLine(this.VM.VendingMachineItems[choice].MessageWhenSoldOut);
                         }
-                        else if (VM.Money.MoneyInMachine < VM.VendingMachineItems[choice].Price)
+                        else if (this.VM.Money.MoneyInMachine < VM.VendingMachineItems[choice].Price)
                         {
-                            Console.WriteLine(VM.NotEnoughMoneyError);
+                            Console.WriteLine(this.VM.NotEnoughMoneyError);
                             break;
                         }
                     }
@@ -85,8 +85,7 @@ namespace Capstone
                 else if (input == "3")
                 {
                     Console.WriteLine("Finishing Transaction");
-                    Console.WriteLine(VM.Money.GiveChange());
-
+                    Console.WriteLine(this.VM.Money.GiveChange());
                 }
                 else if (input.ToUpper() == "Q")
                 {

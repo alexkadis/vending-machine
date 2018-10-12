@@ -9,17 +9,17 @@ namespace Capstone
     public class Candy : VendingItem
     {
 
-        const string Message = "Munch, Munch, Yum!";
+        public const string Message = "Munch, Munch, Yum!";
 
         public Candy(
             string productName,
             decimal price,
-            int itemsRemaining) : base(
-                productName, 
-                price, 
-                itemsRemaining, 
-                Message
-                )
+            int itemsRemaining)
+                : base(
+                productName,
+                price,
+                itemsRemaining,
+                Message)
         {
         }
     }

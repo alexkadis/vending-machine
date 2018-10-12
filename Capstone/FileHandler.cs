@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-
-namespace Capstone
+﻿namespace Capstone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Text;
+
     public class FileHandler
     {
         private const int Pos_itemNumber = 0;
@@ -16,7 +16,7 @@ namespace Capstone
         {
             Dictionary<string, VendingItem> items = new Dictionary<string, VendingItem>();
 
-            string file = "";
+            string file = string.Empty;
             if (File.Exists("vendingmachine.csv"))
             {
                 file = "vendingmachine.csv";
@@ -73,7 +73,7 @@ namespace Capstone
                 Console.WriteLine("Input file is missing!! The vending machine will now self destruct.");
                 items.Add("A1", new Drink("YOU BROKE IT!", 10000M, 5));
             }
-            
+
             return items;
         }
     }

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Capstone
+﻿namespace Capstone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class Menu
     {
-        VendingMachine VM = new VendingMachine();
+        public VendingMachine VM = new VendingMachine();
         public SubMenu SubMenu;
 
         public void Display()
@@ -47,9 +47,6 @@ namespace Capstone
                 Console.Clear();
             }
         }
-
-
-
 
         private static void PrintHeader()
         {

@@ -54,7 +54,7 @@ namespace CapstoneTests
         [TestMethod]
         public void TestsIfNotEnoughMoneyEnteredToPurchaseItem()
         {
-            var vm = new VendingMachine();
+            VendingMachine vm = new VendingMachine();
             vm.RetreiveItem("A1");
             string result = vm.MessageToUser;
             Assert.AreEqual("Not enough money in the machine to complete the transaction.", result);

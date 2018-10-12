@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Capstone
+﻿namespace Capstone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class Chip : VendingItem
     {
-        const string Message = "Crunch, Crunch, Yum!";
+        public const string Message = "Crunch, Crunch, Yum!";
 
         public Chip(
             string productName,
             decimal price,
-            int itemsRemaining) : base(
-                productName, 
-                price, 
-                itemsRemaining, 
-                Message
-                )
+            int itemsRemaining)
+                : base(
+                productName,
+                price,
+                itemsRemaining,
+                Message)
         {
         }
     }

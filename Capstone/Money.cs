@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Capstone
+﻿namespace Capstone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class Money
     {
-        public decimal MoneyInMachine { get; private set; }
         public Logger Log;
 
         public Money(Logger log)
@@ -14,6 +13,8 @@ namespace Capstone
             this.MoneyInMachine = 0M;
             this.Log = log;
         }
+
+        public decimal MoneyInMachine { get; private set; }
 
         public bool AddMoney(string amount)
         {
@@ -23,7 +24,6 @@ namespace Capstone
                 return false;
             }
 
-            
             string message = $"FEED MONEY: ";
 
             // Logging before: current money in machine
@@ -36,10 +36,7 @@ namespace Capstone
             decimal after = this.MoneyInMachine;
 
             // Log the log
-            Log.Log(message, before, after);
-
-
-            
+            this.Log.Log(message, before, after);
             return true;
         }
 
@@ -49,20 +46,21 @@ namespace Capstone
             {
                 return false;
             }
-            
+
             this.MoneyInMachine -= amountToRemove;
             return true;
         }
 
         public string GiveChange()
         {
-            string result = "";
+            string result = string.Empty;
             int quarters = 0;
             int dimes = 0;
             int nickels = 0;
 
             // Logging message "CANDYBARNAME A1"
             string message = $"GIVE CHANGE: ";
+
             // Logging before: current money in machine
             decimal before = this.MoneyInMachine;
 
@@ -87,12 +85,9 @@ namespace Capstone
                     }
                 }
 
-                
-                 
-
-                string qS = "";
-                string dS = "";
-                string nS = "";
+                string qS = string.Empty;
+                string dS = string.Empty;
+                string nS = string.Empty;
                 if (quarters > 0)
                 {
                     qS = $"{quarters} quarters";
@@ -129,7 +124,6 @@ namespace Capstone
                     result = "No change to give.";
                 }
 
-
                 // Logging after: current money in machine
                 decimal after = this.MoneyInMachine;
 
@@ -140,6 +134,7 @@ namespace Capstone
             {
                 result = "No money to return";
             }
+
             return result;
         }
     }

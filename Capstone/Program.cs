@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Capstone
+﻿namespace Capstone
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    public class Program
     {
         public static void Main(string[] args)
         {
-            
-
             Menu menu = new Menu();
-
-
             menu.Display();
         }
     }

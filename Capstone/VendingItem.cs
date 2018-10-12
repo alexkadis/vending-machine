@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Capstone
+﻿namespace Capstone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public abstract class VendingItem
     {
         /// <summary>
@@ -40,21 +40,20 @@ namespace Capstone
             this.ItemsRemaining = itemsRemaining;
             this.MessageWhenVended = messageWhenVended;
             this.MessageWhenSoldOut = $"Sold out of {this.ProductName}!\nBuy something else!";
-
         }
 
         /// <summary>
         /// Returns false if it can't get the item
         /// </summary>
-        /// <param name="itemNumber"></param>
-        /// <returns></returns>
-            public bool RemoveItem()
-        {
-            if(ItemsRemaining > 0)
+        /// <returns>bool</returns>
+        public bool RemoveItem()
             {
-                ItemsRemaining--;
+            if (this.ItemsRemaining > 0)
+            {
+                this.ItemsRemaining--;
                 return true;
             }
+
             return false;
         }
     }
