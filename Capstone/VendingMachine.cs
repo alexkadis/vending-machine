@@ -6,10 +6,10 @@
 
     public class VendingMachine
     {
-        public Logger Log = new Logger();
+        private Logger Log = new Logger();
         public Dictionary<string, VendingItem> VendingMachineItems = new Dictionary<string, VendingItem>();
         FileHandler HandleFiles = new FileHandler();
-        public Money Money;
+        public Money Money { get; }
         public string NotEnoughMoneyError = "Not enough money in the machine to complete the transaction.";
         public string MessageToUser;
 
@@ -18,6 +18,14 @@
             this.VendingMachineItems = this.HandleFiles.GetVendingItems();
             this.Money = new Money(this.Log);
 
+        }
+
+        public decimal MoneyInMachine
+        {
+            get
+            {
+                return this.Money.MoneyInMachine;
+            }
         }
 
         public void DisplayAllItems()

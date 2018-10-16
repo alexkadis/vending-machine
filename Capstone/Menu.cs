@@ -6,11 +6,13 @@
 
     public class Menu
     {
-        public VendingMachine VM = new VendingMachine();
-        public SubMenu SubMenu;
+
+
 
         public void Display()
         {
+            VendingMachine vm = new VendingMachine();
+
             PrintHeader();
             while (true)
             {
@@ -26,12 +28,12 @@
                 if (input == "1")
                 {
                     Console.WriteLine("Displaying Items");
-                    VM.DisplayAllItems();
+                    vm.DisplayAllItems();
                 }
                 else if (input == "2")
                 {
-                    this.SubMenu = new SubMenu(VM);
-                    this.SubMenu.Display();
+                    SubMenu subMenu = new SubMenu(vm);
+                    subMenu.Display();
                 }
                 else if (input.ToUpper() == "Q")
                 {

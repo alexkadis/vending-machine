@@ -6,12 +6,12 @@
 
     public class Money
     {
-        public Logger Log;
+        private Logger log;
 
         public Money(Logger log)
         {
             this.MoneyInMachine = 0M;
-            this.Log = log;
+            this.log = log;
         }
 
         public decimal MoneyInMachine { get; private set; }
@@ -36,7 +36,7 @@
             decimal after = this.MoneyInMachine;
 
             // Log the log
-            this.Log.Log(message, before, after);
+            this.log.Log(message, before, after);
             return true;
         }
 
@@ -85,54 +85,64 @@
                     }
                 }
 
-                string qS = string.Empty;
-                string dS = string.Empty;
-                string nS = string.Empty;
-                if (quarters > 0)
-                {
-                    qS = $"{quarters} quarters";
-                }
-                if (dimes > 0)
-                {
-                    dS = $"{dimes} dimes";
-                }
-                if (nickels > 0)
-                {
-                    nS = $"{nickels} nickels";
-                }
-
-                result = $"Your change is ";
-
-                if (quarters > 0 && dimes > 0 && nickels > 0)
-                {
-                    result += $"{qS}, {dS}, and {nS}";
-                }
-                else if ((quarters > 0 && dimes > 0) || (quarters > 0 && nickels > 0))
-                {
-                    result += $"{qS} and {dS}{nS}";
-                }
-                else if (dimes > 0 && nickels > 0)
-                {
-                    result += $"{dS} and {nS}";
-                }
-                else if (quarters > 0 || dimes > 0 || nickels > 0)
-                {
-                    result += $"{qS}{dS}{nS}";
-                }
-                else
-                {
-                    result = "No change to give.";
-                }
+                result = GetMessage(quarters, dimes, nickels);
 
                 // Logging after: current money in machine
                 decimal after = this.MoneyInMachine;
 
                 // Log the log
-                Log.Log(message, before, after);
+                log.Log(message, before, after);
             }
             else
             {
                 result = "No money to return";
+            }
+
+            return result;
+        }
+
+        private string GetMessage(int quarters, int dimes, int nickels)
+        {
+            string qS = string.Empty;
+            string dS = string.Empty;
+            string nS = string.Empty;
+
+            if (quarters > 0)
+            {
+                qS = $"{quarters} quarters";
+            }
+
+            if (dimes > 0)
+            {
+                dS = $"{dimes} dimes";
+            }
+
+            if (nickels > 0)
+            {
+                nS = $"{nickels} nickels";
+            }
+
+            string result = $"Your change is ";
+
+            if (quarters > 0 && dimes > 0 && nickels > 0)
+            {
+                result += $"{qS}, {dS}, and {nS}";
+            }
+            else if ((quarters > 0 && dimes > 0) || (quarters > 0 && nickels > 0))
+            {
+                result += $"{qS} and {dS}{nS}";
+            }
+            else if (dimes > 0 && nickels > 0)
+            {
+                result += $"{dS} and {nS}";
+            }
+            else if (quarters > 0 || dimes > 0 || nickels > 0)
+            {
+                result += $"{qS}{dS}{nS}";
+            }
+            else
+            {
+                result = "No change to give.";
             }
 
             return result;

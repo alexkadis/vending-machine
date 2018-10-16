@@ -8,7 +8,6 @@ namespace Capstone
 
     public class Candy : VendingItem
     {
-
         public const string Message = "Munch, Munch, Yum!";
 
         public Candy(
