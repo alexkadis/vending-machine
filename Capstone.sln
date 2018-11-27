@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capstone", "Capstone\Capstone.csproj", "{46AC88BE-6D0E-4B93-BA3F-46BCD0056D86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capstone", "Capstone\Capstone.csproj", "{46AC88BE-6D0E-4B93-BA3F-46BCD0056D86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapstoneTests", "CapstoneTests\CapstoneTests.csproj", "{4BA2FE82-E9FA-4ABF-9F2A-364DE58F81F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CapstoneTests", "CapstoneTests\CapstoneTests.csproj", "{4BA2FE82-E9FA-4ABF-9F2A-364DE58F81F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{011B0229-2E54-4C0A-95B7-D66875FCAD67}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

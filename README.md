@@ -1,7 +1,11 @@
-# Class: Menu (provided)
+# Vending Machine
+A simple C# command line program demonstrating OOP.
 
+![Vending Machine CLI](vending-machine.gif)
 
-# Class: VendingMachine (the controller)
+## Class: Menu (provided)
+
+## Class: VendingMachine (the controller)
 1. Handles the Display class (which calls the Menu Class)
 2. Gets the stuff from the inventory file
 3. Creates the VendingItems Objects (adds them to a list)
@@ -11,8 +15,7 @@
 
 Basically it uses all of the other classes...
 
-
-<!-- # Abstract class or Interface: VendingItem
+## Abstract class: VendingItem
 - Slot Location
 - Product name
 - Price
@@ -20,21 +23,22 @@ Basically it uses all of the other classes...
 - Stock
 - Message when vended
 
-# Each food type is a class that inherits from VendingItem:
+## Each food type is a class that inherits from VendingItem:
 - chips
 - candy
 - drinks
-- gum -->
+- gum
 
-# Class: Money
+## Class: Money
 - Tracks money fed into the system
 - Has a method that calculates change/coins based on values it's given
 
-# Class: Logger
+## Class: Logger
 - Every time an action is taken, the logger class is called
 - Has two different types of logs:
     + Purchase Log (money coming in and out)
     + Sales Report
 
-# Class: File Handler
-- A wrapper for StreamReader and StreamWriter
+## Class: File Handler
+- A wrapper for StreamReader and vending-machine.gif
+[vending machine CLI]: 
